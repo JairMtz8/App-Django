@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Buscador</title>
+  </head>
+  <body>
+    <form method="get">
+      <input type="text" placeholder="buscar..." , name="q" />
+      <button type="submit">Buscar</button>
+    </form>
+
+    {% if results %}
+
+    <ul>
+      {% for item in results %}
+
+      <li>
+        <a href="{{ item.link }}">{{item.title}}</a>
+        <br />
+        <p>{{item.snippet}}</p>
+      </li>
+
+      {% endfor%}
+    </ul>   
+    {% endif %}
+
+    <!--Aqui debemos pintar los resultados de la busqueda-->
+  </body>
+</html>

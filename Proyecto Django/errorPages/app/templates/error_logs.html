@@ -1,0 +1,29 @@
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+
+<table id="errorTable" class="display">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Código</th>
+            <th>Mensaje</th>
+            <th>Fecha</th>
+        </tr>
+    </thead>
+</table>
+
+<script>
+    $(document).ready(function () {
+        $('#errorTable').DataTable({
+            "ajax": "{% url 'get_error_logs' %}",
+            "columns": [
+                { "data": "id" },
+                { "data": "codigo" },
+                { "data": "mensaje" },
+                { "data": "fecha" }
+            ]
+        });
+    });
+</script>

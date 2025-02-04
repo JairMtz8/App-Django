@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Mensaje</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+
+<body>
+    <!-- Modal -->
+
+    <div class="modal fade" id="messageModal" tabindex="-1" aria- labelledby="messageModalLabel" aria-hidden="true">
+
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="messageModalLabel">Mensaje</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="modalMessage"></p>
+                    <img id="modalImage" class="img-fluid" style="display: none;" alt="Imagen del mensaje">
+                </div>
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-secondary" data-bs- dismiss="modal">Cerrar</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const message = JSON.parse('{{ message|safe|default:"null" }}');
+            if (message) {
+                document.getElementById("modalMessage").innerText =
+                    `[${message.typr.toUpperCase()}] Código ${message.code}: ${message.message}`;
+                if (message.img) {
+                    const imgElement = document.getElementById("modalImage");
+                    imgElement.src = message.img;
+                    imgElement.style.display = "block";
+                }
+                const modal = new
+                    bootstrap.Modal(document.getElementById('messageModal'));
+                modal.show();
+            }
+        });
+    </script>
+
+</body>
+
+</html>

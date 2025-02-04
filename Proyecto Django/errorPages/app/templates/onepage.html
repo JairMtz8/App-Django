@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Página de ejemplo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="col">
+        <div class="row">
+          <!-- Poner aquí las cartas por defecto -->
+
+          <div class="card" style="width: 18rem">
+            <!-- <img src="..." class="card-img-top" alt="..."> -->
+            <div class="card-body">
+              <h5 class="card-title">Primera tarjeta</h5>
+              <p class="card-text">
+                Está es la primera tarjeta. Lorem ipsum dolor sit amet,
+                consectetur adipiscing elit. Quisque lacinia sit amet erat quis
+                cursus. Ut aliquet lorem sit amet finibus rutrum. Nam euismod
+                ipsum quis est sagittis, ut dignissim arcu sodales. Phasellus
+                nibh lacus, rutrum semper tempor dapibus, condimentum id nibh.
+                Nullam nibh neque, vestibulum vel orci quis, sollicitudin
+                consectetur sem. Donec ac mauris a dui pharetra molestie at et
+                dolor. Praesent convallis volutpat tortor ac vulputate. Praesent
+                quis porttitor augue, at tincidunt justo. Duis nisi nisl,
+                convallis facilisis velit a, sodales tempus quam. Quisque sed
+                erat leo. Suspendisse potenti. Maecenas euismod ultrices justo,
+                nec imperdiet ante porta vitae. Ut vel est orci. Praesent non
+                est a augue laoreet lobortis. Nullam hendrerit elit vitae felis
+                maximus, at convallis leo lacinia. Nunc sit amet fermentum sem.
+                Nunc sit amet placerat libero, a semper sapien. Morbi non mollis
+                diam, quis ornare est. Curabitur augue est, consectetur non
+                neque non, iaculis porta est. Morbi maximus arcu facilisis,
+                sagittis massa ac, dapibus magna. Quisque sed dictum ex. In
+                vulputate diam augue, ut efficitur nulla ultricies eu. Etiam eu
+                metus nec mauris pulvinar elementum in non nisi.
+              </p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+
+          <div class="card" style="width: 18rem">
+            <!-- <img src="..." class="card-img-top" alt="..."> -->
+            <div class="card-body">
+              <h5 class="card-title">Segunda tarjeta</h5>
+              <p class="card-text">Está es la segunda tarjeta.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+
+          <div class="card" style="width: 18rem">
+            <!-- <img src="..." class="card-img-top" alt="..."> -->
+            <div class="card-body">
+              <h5 class="card-title">Tercera tarjeta</h5>
+              <p class="card-text">Está es la tercera tarjeta.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+
+          <div id="tarjetas"></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      var i = 1;
+
+      function loadCards() {
+        if (i > 100) {
+          console.log("Limite de 100 tarjetas alcanzado");
+          return;
+        }
+        var object = {
+          titulo: "Card " + i,
+          descripcion: "Texto de la card " + i,
+        };
+
+        console.log("Acabas de scrollear hasta abajo");
+
+        var contenedor = document.createElement("div");
+        contenedor.setAttribute("class", "card");
+        contenedor.setAttribute("style", "width: 18rem;");
+
+        var body = document.createElement("div");
+        body.setAttribute("class", "card-body");
+
+        var h5 = document.createElement("h5");
+        h5.setAttribute("class", "card-tittle");
+        h5.innerHTML = object.titulo;
+
+        var p = document.createElement("p");
+        p.setAttribute("class", "card-text");
+        p.innerHTML = object.descripcion;
+
+        body.appendChild(h5);
+        body.appendChild(p);
+        contenedor.appendChild(body);
+
+        document.getElementById("tarjetas").appendChild(contenedor);
+
+        i++;
+      }
+
+      window.addEventListener("scroll", () => {
+        if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+          loadCards();
+        }
+      });
+    </script>
+  </body>
+</html>
